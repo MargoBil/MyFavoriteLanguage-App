@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegisterComponent } from './register.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { AuthorizationComponent } from './authorization.component';
 
 @NgModule({
-  declarations: [RegisterComponent],
+  declarations: [AuthorizationComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -22,8 +22,20 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     MatCardModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
   ],
-  exports: [RegisterComponent],
+  exports: [
+    CommonModule,
+    MatFormFieldModule,
+    MatButtonToggleModule,
+    MatIconModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatCardModule,
+    MatButtonModule,
+    RouterModule,
+    AuthorizationComponent,
+  ],
 })
-export class RegisterModule {}
+export class AuthorizationModule {}
