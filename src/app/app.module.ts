@@ -8,10 +8,13 @@ import { HeaderModule } from './core/components/header/header.module';
 import { FooterModule } from './core/components/footer/footer.module';
 import { RegisterModule } from './features/register/register.module';
 import { HomeModule } from './features/home/home.module';
+import { AuthorizationComponent } from './core/components/authorization/authorization.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    AuthorizationComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,7 @@ import { HomeModule } from './features/home/home.module';
     HeaderModule,
     FooterModule,
     RegisterModule,
-    HomeModule
+    HomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

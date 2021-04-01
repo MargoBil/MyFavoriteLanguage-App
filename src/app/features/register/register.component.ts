@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  public hide = true;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public onToggleClickPasswordIcon(): void {
+    this.hide = !this.hide;
   }
 
 }
