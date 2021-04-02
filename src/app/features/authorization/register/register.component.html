@@ -1,16 +1,38 @@
 <app-authorization-card>
-  <form>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div
+      class="validation"
+      *ngIf="registerForm.get('name').invalid && registerForm.get('name').touched"
+    >
+      <small>the name can't be empty!</small>
+    </div>
     <mat-form-field class="input" appearance="fill">
       <mat-label>name</mat-label>
-      <input matInput autocomplete="off" />
+      <input matInput autocomplete="off" formControlName="name" />
     </mat-form-field>
+    <div
+      class="validation"
+      *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched"
+    >
+      <small *ngIf="registerForm.get('email').errors.required">the email can't be empty!</small>
+      <small *ngIf="registerForm.get('email').errors.email">put the correct email!</small>
+    </div>
     <mat-form-field class="input" appearance="fill">
       <mat-label>email</mat-label>
-      <input matInput autocomplete="off" />
+      <input matInput autocomplete="off" formControlName="email" />
     </mat-form-field>
+    <div
+      class="validation"
+      *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched"
+    >
+      <small *ngIf="registerForm.get('password').errors.required"
+        >the password can't be empty!</small
+      >
+      <small *ngIf="registerForm.get('password').errors.minlength">put the correct password!</small>
+    </div>
     <mat-form-field class="input" appearance="fill" autocomplete="off">
       <mat-label>password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" />
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
       <button
         (click)="onToggleClickPasswordIcon()"
         mat-icon-button
@@ -23,8 +45,16 @@
       </button>
     </mat-form-field>
     <div class="buttons-container">
-      <button mat-flat-button color="primary" [routerLink]="['/login']">Login</button>
-      <button mat-flat-button color="primary" [routerLink]="['/register']">Register</button>
+      <button mat-flat-button color="primary" type="button" [routerLink]="['/login']">Login</button>
+      <button
+        mat-flat-button
+        color="primary"
+        type="submit"
+        [disabled]="registerForm.invalid"
+        [routerLink]="['/register']"
+      >
+        Register
+      </button>
     </div>
   </form>
 </app-authorization-card>
