@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { AuthorizationComponent } from './authorization.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AuthorizationComponent],
@@ -23,6 +24,7 @@ import { AuthorizationComponent } from './authorization.component';
     MatCardModule,
     MatButtonModule,
     RouterModule,
+    HttpClientModule,
   ],
   exports: [
     CommonModule,
@@ -36,6 +38,7 @@ import { AuthorizationComponent } from './authorization.component';
     MatButtonModule,
     RouterModule,
     AuthorizationComponent,
+    HttpClientModule,
   ],
 })
 export class AuthorizationModule {}

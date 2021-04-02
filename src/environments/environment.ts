@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  url: 'https://protected-retreat-95419.herokuapp.com',
 };
 
 /*

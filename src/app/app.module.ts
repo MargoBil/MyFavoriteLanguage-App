@@ -9,6 +9,7 @@ import { RegisterModule } from './features/authorization/register/register.modul
 import { HomeModule } from './features/home/home.module';
 import { AuthorizationModule } from './features/authorization/authorization.module';
 import { LoginModule } from './features/authorization/login/login.module';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { LoginModule } from './features/authorization/login/login.module';
     AuthorizationModule,
     RegisterModule,
     LoginModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

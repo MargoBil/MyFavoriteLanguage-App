@@ -1,19 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
-  public hide = true;
+export class RegisterComponent implements OnInit, OnDestroy {
   public registerForm: FormGroup;
+  public subscription: Subscription = new Subscription();
+  public hide = true;
 
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.initRegisterForm();
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   public initRegisterForm(): void {
@@ -30,7 +40,11 @@ export class RegisterComponent implements OnInit {
 
   public onSubmit(): void {
     if (this.registerForm.valid) {
-      console.log('submit: ', this.registerForm.value);
+      this.subscription.add(
+        this.authService.onRegister(this.registerForm.value).subscribe(() => {
+          this.router.navigate(['/login']);
+        }),
+      );
     }
   }
 }
