@@ -3,6 +3,7 @@
 .header-wrapper {
   height: 60px;
   box-shadow: 0px 3px 5px #324634;
+  display: flex;
 }
 
 .logo {
@@ -12,4 +13,30 @@
   color: #ffc400;
   text-shadow: 2px 2px 5px #0a0a0a;
   font-size: 20px;
+}
+
+.account-text {
+  width: 100%;
+  font-size: 12px;
+  font-style: italic;
+  margin: 0px;
+  line-height: 1;
+  text-align: center;
+  color: #B2DFDB;
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+
+.account-container {
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 50px;
+}
+
+.logout-icon {
+  cursor: pointer;
 }

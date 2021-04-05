@@ -5,7 +5,7 @@ import { ApiService } from './api.service';
 import { apiLinks } from '../constants';
 import { tap } from 'rxjs/operators';
 
-const { register, login } = apiLinks;
+const { register, login, user } = apiLinks;
 
 @Injectable({
   providedIn: 'root',
@@ -24,4 +24,13 @@ export class AuthService {
       }),
     );
   }
+
+  public getCurrentUser(): Observable<any> {
+    return this.apiService.get(user);
+  }
+
+  public isAuth(): boolean {
+    return !!localStorage.getItem('token');
+  }
+  
 }
