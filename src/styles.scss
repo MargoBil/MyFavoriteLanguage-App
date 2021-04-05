@@ -33,11 +33,15 @@ $my-favorite-language-app-warn: mat-palette($mat-red);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$my-favorite-language-app-theme: mat-light-theme((color: (primary: $my-favorite-language-app-primary,
+$my-favorite-language-app-theme: mat-light-theme(
+  (
+    color: (
+      primary: $my-favorite-language-app-primary,
       accent: $my-favorite-language-app-accent,
       warn: $my-favorite-language-app-warn,
     ),
-  ));
+  )
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component

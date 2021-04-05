@@ -16,8 +16,8 @@ import { AuthGuard } from './core/guards/auth.guard';
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
   useClass: AuthInterceptor,
-  multi: true
-}
+  multi: true,
+};
 
 @NgModule({
   declarations: [AppComponent],

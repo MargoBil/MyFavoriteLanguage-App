@@ -22,11 +22,11 @@ export class HeaderComponent implements OnInit {
         this.currentUrl = data.urlAfterRedirects;
         this.showUserMenu = this.checkRouterUrl(this.currentUrl);
       });
-      if (this.authService.isAuth()) {
-        this.authService.getCurrentUser().subscribe(({ name }) => {
-          this.userName = name;
-        });
-      }
+    if (this.authService.isAuth()) {
+      this.authService.getCurrentUser().subscribe(({ name }) => {
+        this.userName = name;
+      });
+    }
   }
 
   public handlerClickOnLogoutIcon(): void {
