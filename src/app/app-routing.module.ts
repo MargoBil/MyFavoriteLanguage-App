@@ -4,6 +4,7 @@ import { HomeComponent } from './features/home/home.component';
 import { LoginComponent } from './features/authorization/login/login.component';
 import { RegisterComponent } from './features/authorization/register/register.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { NotFoundComponent } from './features/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -21,8 +22,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
-    pathMatch: 'full', // TODO: changes redirect url
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -21,12 +21,12 @@ export class HeaderComponent implements OnInit {
       .subscribe((data: NavigationEnd) => {
         this.currentUrl = data.urlAfterRedirects;
         this.showUserMenu = this.checkRouterUrl(this.currentUrl);
+        if (this.showUserMenu) {
+          this.authService.getCurrentUser().subscribe(({ name }) => {
+            this.userName = name;
+          });
+        }
       });
-    if (this.authService.isAuth()) {
-      this.authService.getCurrentUser().subscribe(({ name }) => {
-        this.userName = name;
-      });
-    }
   }
 
   public handlerClickOnLogoutIcon(): void {

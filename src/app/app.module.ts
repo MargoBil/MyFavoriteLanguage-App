@@ -12,6 +12,7 @@ import { LoginModule } from './features/authorization/login/login.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/services/auth.interceptor';
 import { AuthGuard } from './core/guards/auth.guard';
+import { NotFoundModule } from './features/not-found/not-found.module';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -32,6 +33,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     RegisterModule,
     LoginModule,
     HttpClientModule,
+    NotFoundModule,
   ],
   providers: [INTERCEPTOR_PROVIDER, AuthGuard],
   bootstrap: [AppComponent],

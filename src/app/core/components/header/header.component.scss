@@ -19,7 +19,7 @@
   width: 100%;
   font-size: 12px;
   font-style: italic;
-  margin: 0px;
+  margin: 3px 0px;
   line-height: 1;
   text-align: center;
   color: #b2dfdb;
@@ -29,14 +29,32 @@
   }
 }
 
-.account-container {
-  margin-left: auto;
+.user-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: 50px;
+}
+
+.account-wrapper {
+  display: flex;
+  margin-left: auto;
+  width: 70px;
 }
 
 .logout-icon {
   cursor: pointer;
+}
+
+.menu-container {
+  margin: 0 auto;
+  display: flex;
+  width: 500px;
+  justify-content: space-evenly;
+  & a {
+    width: 120px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #324634;
+    height: 35px;
+  }
 }

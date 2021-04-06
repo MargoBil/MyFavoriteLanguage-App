@@ -1,14 +1,23 @@
 <mat-toolbar class="header-wrapper" color="primary">
   <img width="30px" src="../../../../assets/icons/owl-1266206.svg" />
   <span class="logo">MyFavoriteLanguage</span>
-  <div class="account-container">
-    <img width="30px" src="../../../../assets/icons/smile.svg" />
-    <p class="account-text">{{ userName }}</p>
+  <div style="width: 100%; display: flex">
+    <div class="menu-container">
+      <a color="accent" mat-raised-button routerLink=".">VOCABULARY</a>
+      <a color="accent" mat-raised-button routerLink=".">ADD WORD</a>
+      <a color="accent" mat-raised-button routerLink=".">TRAINING</a>
+    </div>
+    <div *ngIf="showUserMenu" class="account-wrapper">
+      <div class="user-container">
+        <img width="20px" src="../../../../assets/icons/avatar.svg" />
+        <p class="account-text">{{ userName }}</p>
+      </div>
+      <img
+        class="logout-icon"
+        (click)="handlerClickOnLogoutIcon()"
+        width="20px"
+        src="../../../../assets/icons/exit.svg"
+      />
+    </div>
   </div>
-  <img
-    class="logout-icon"
-    (click)="handlerClickOnLogoutIcon()"
-    width="20px"
-    src="../../../../assets/icons/exit.svg"
-  />
 </mat-toolbar>
