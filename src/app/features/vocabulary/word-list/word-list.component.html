@@ -1,0 +1,22 @@
+<div class="list-wrapper">
+  <mat-chip-list class="mat-chip-list-stacked list">
+    <mat-chip *ngFor="let words of wordList; trackBy: trackById" selected class="word-item">
+      <div class="word-box">
+        <span class="word-text" *ngFor="let word of words.word"
+          >{{ word }}<span *ngIf="isItemRender(word, words.word)"> -- </span></span
+        >
+      </div>
+      <div class="translate-box">
+        <span class="word-text" *ngFor="let translate of words.translateWord"
+          >{{ translate }}<span *ngIf="isItemRender(translate, words.translateWord)"> -- </span>
+        </span>
+      </div>
+      <div class="pencil-update" (click)="handlerClickForUpdate(words._id)">
+        <img width="20px" src="../../../../assets/icons/pencil-update.svg" />
+      </div>
+      <div class="icon-delete" (click)="handlerClickForDelete(words._id)">
+        <img width="25px" src="../../../../assets/icons/delete.svg" />
+      </div>
+    </mat-chip>
+  </mat-chip-list>
+</div>

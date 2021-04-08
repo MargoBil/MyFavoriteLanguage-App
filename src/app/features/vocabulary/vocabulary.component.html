@@ -1,0 +1,40 @@
+<div>
+  <div class="searcher">
+    <form [formGroup]="searcher" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>search word...</mat-label>
+        <input matInput formControlName="wordName" autocomplete="off" />
+        <button
+          type="reset"
+          mat-button
+          mat-icon-button
+          *ngIf="wordName"
+          matSuffix
+          (click)="value = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <div class="searcher-btn">
+        <button type="submit" mat-mini-fab color="primary">
+          <mat-icon>manage_search</mat-icon>
+        </button>
+      </div>
+    </form>
+  </div>
+  <app-word-list
+    [wordList]="wordList"
+    (updateWord)="updateWord($event)"
+    (deleteWord)="deleteWord($event)"
+  >
+  </app-word-list>
+  <mat-paginator
+    class="paginator-container"
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="onPageChanges($event)"
+  >
+  </mat-paginator>
+</div>

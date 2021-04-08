@@ -1,0 +1,35 @@
+.word-item {
+  display: flex;
+  justify-content: flex-start;
+  height: 60px;
+}
+
+.word-box,
+.translate-box {
+  width: 40%;
+  padding-left: 10px;
+  & .word-text {
+    font-size: 20px;
+    text-shadow: 0px 2px 3px #324634;
+    font-weight: 500;
+  }
+}
+
+.list-wrapper {
+  width: 700px;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+}
+
+.pencil-update,
+.icon-delete {
+  text-align: end;
+  width: 10%;
+  cursor: pointer;
+}
+
+.icon-delete {
+  margin-right: 5px;
+}

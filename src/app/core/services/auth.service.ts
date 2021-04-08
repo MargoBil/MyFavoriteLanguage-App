@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ILoginReqBody, IRegisterReqBody } from '../interfaces/auth.interfaces';
+import { ILoginReqBody, IRegisterReqBody } from '../interfaces/auth.interface';
 import { ApiService } from './api.service';
 import { apiLinks } from '../constants';
 import { tap } from 'rxjs/operators';

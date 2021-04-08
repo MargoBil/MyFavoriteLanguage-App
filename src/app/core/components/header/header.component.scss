@@ -48,13 +48,29 @@
 .menu-container {
   margin: 0 auto;
   display: flex;
-  width: 500px;
   justify-content: space-evenly;
-  & a {
+  & .router-link {
     width: 120px;
     font-size: 14px;
     font-weight: 700;
     color: #324634;
     height: 35px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+.home-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50% 50% 50% 50%;
+  background-color: #a7ffeb;
+  box-shadow: 0px 0px 13px 0px rgba(34, 60, 80, 0.2);
+  width: 35px;
+  height: 35px;
+  & img {
+    cursor: pointer;
+    outline: none;
   }
 }

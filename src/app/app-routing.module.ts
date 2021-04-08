@@ -5,6 +5,7 @@ import { LoginComponent } from './features/authorization/login/login.component';
 import { RegisterComponent } from './features/authorization/register/register.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { NotFoundComponent } from './features/not-found/not-found.component';
+import { VocabularyComponent } from './features/vocabulary/vocabulary.component';
 
 const routes: Routes = [
   {
@@ -16,14 +17,23 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: 'home',
-    component: HomeComponent,
-    canActivate: [AuthGuard],
-  },
-  {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+      },
+      {
+        path: 'home',
+        component: HomeComponent,
+      },
+      {
+        path: 'vocabulary',
+        component: VocabularyComponent,
+      },
+    ],
   },
   {
     path: '**',

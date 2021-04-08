@@ -39,9 +39,15 @@ export class HeaderComponent implements OnInit {
   }
 
   private checkRouterUrl(currentUrl): boolean {
-    const routerConfig = this.router.config
-      .map((item) => `/${item.path}`)
-      .filter((item) => item !== '/login' && item !== '/register');
-    return routerConfig.includes(currentUrl);
+    const routerConfig = [];
+    this.router.config.map((item) => {
+      if (item.children) {
+        item.children.map((e) => routerConfig.push(`/${e.path}`));
+      }
+      return routerConfig.push(`/${item.path}`);
+    });
+    return [
+      ...new Set(routerConfig.filter((item) => item !== '/login' && item !== '/register')),
+    ].includes(currentUrl);
   }
 }
