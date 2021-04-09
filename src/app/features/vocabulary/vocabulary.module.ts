@@ -25,7 +25,7 @@ import { ConfirmComponent } from './confirm/confirm.component';
     ReactiveFormsModule,
     MatIconModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   exports: [VocabularyComponent],
 })

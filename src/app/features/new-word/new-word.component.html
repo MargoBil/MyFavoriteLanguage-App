@@ -9,7 +9,9 @@
       <mat-form-field appearance="fill">
         <mat-label>select...</mat-label>
         <mat-select formControlName="language">
-          <mat-option *ngFor="let language of languages" [value]="language">{{ language }}</mat-option>
+          <mat-option *ngFor="let language of languages" [value]="language">{{
+            language
+          }}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -21,10 +23,14 @@
       <mat-form-field appearance="fill">
         <mat-label>select...</mat-label>
         <mat-select formControlName="translateLanguage">
-          <mat-option *ngFor="let language of languages" [value]="language">{{ language }}</mat-option>
+          <mat-option *ngFor="let language of languages" [value]="language">{{
+            language
+          }}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="submit-btn-box"><button [disabled]="newWordForm.invalid" mat-flat-button color="primary">Create</button></div>
+    <div class="submit-btn-box">
+      <button [disabled]="newWordForm.invalid" mat-flat-button color="primary">Create</button>
+    </div>
   </form>
 </div>

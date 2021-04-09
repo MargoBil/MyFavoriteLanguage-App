@@ -66,10 +66,10 @@ export class VocabularyComponent implements OnInit, OnDestroy {
 
   public deleteWord(wordId: string): void {
     this.subscription.add(
-      this.dictionaryService.deleteWord(wordId).subscribe(()=>{
+      this.dictionaryService.deleteWord(wordId).subscribe(() => {
         this.getAllWords(this.pageIndex, this.pageSize);
-      })
-    )
+      }),
+    );
   }
 
   public onSubmit(): void {
