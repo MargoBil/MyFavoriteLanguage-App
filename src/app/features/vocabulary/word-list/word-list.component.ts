@@ -1,6 +1,8 @@
 import { EventEmitter, Input, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { IWord } from 'src/app/core/interfaces/dictionary.interface';
+import { ConfirmComponent } from '../confirm/confirm.component';
 
 @Component({
   selector: 'app-word-list',
@@ -12,7 +14,7 @@ export class WordListComponent implements OnInit {
   @Output() updateWord = new EventEmitter<string>();
   @Output() deleteWord = new EventEmitter<string>();
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
@@ -25,7 +27,13 @@ export class WordListComponent implements OnInit {
   }
 
   public handlerClickForDelete(wordId: string): void {
-    this.deleteWord.emit(wordId);
+    const dialogRef = this.dialog.open(ConfirmComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.deleteWord.emit(wordId);
+      }
+      return;
+    });
   }
 
   public trackById(index: string, item: any): void {

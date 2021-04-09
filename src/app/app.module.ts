@@ -14,6 +14,7 @@ import { AuthInterceptor } from './core/services/auth.interceptor';
 import { AuthGuard } from './core/guards/auth.guard';
 import { NotFoundModule } from './features/not-found/not-found.module';
 import { VocabularyModule } from './features/vocabulary/vocabulary.module';
+import { NewWordModule } from './features/new-word/new-word.module';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -36,6 +37,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     HttpClientModule,
     NotFoundModule,
     VocabularyModule,
+    NewWordModule,
   ],
   providers: [INTERCEPTOR_PROVIDER, AuthGuard],
   bootstrap: [AppComponent],

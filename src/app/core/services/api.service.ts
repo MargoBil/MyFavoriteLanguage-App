@@ -11,7 +11,7 @@ export class ApiService {
     return this.http.get(`${url}${query || ''}`);
   }
 
-  public post(url: string, body: any): Observable<any> {
+  public post(url: string, body?: any): Observable<any> {
     return this.http.post(url, body, { headers: this.headers });
   }
 
@@ -23,7 +23,7 @@ export class ApiService {
     return this.http.delete(url, options);
   }
 
-  public patch(url: string): Observable<any> {
-    return this.http.patch(url, '');
+  public patch(url: string, body?: any): Observable<any> {
+    return this.http.patch(url, body);
   }
 }

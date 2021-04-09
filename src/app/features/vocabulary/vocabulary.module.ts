@@ -10,9 +10,11 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 @NgModule({
-  declarations: [VocabularyComponent, WordListComponent],
+  declarations: [VocabularyComponent, WordListComponent, ConfirmComponent],
   imports: [
     CommonModule,
     MatTabsModule,
@@ -23,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     MatIconModule,
     MatButtonModule,
+    MatDialogModule
   ],
   exports: [VocabularyComponent],
 })

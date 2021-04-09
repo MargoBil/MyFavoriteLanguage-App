@@ -1,8 +1,7 @@
 <mat-toolbar class="header-wrapper" color="primary">
   <img width="30px" src="../../../../assets/icons/owl-1266206.svg" />
   <span class="logo">MyFavoriteLanguage</span>
-
-  <div style="width: 100%; display: flex">
+  <div *ngIf="showUserMenu" style="width: 100%; display: flex">
     <div class="menu-container">
       <div class="home-icon-box">
         <img [routerLink]="['/home']" width="30px" src="../../../../assets/icons/home.svg" />
@@ -10,10 +9,10 @@
       <a class="router-link" color="accent" mat-raised-button [routerLink]="['/vocabulary']"
         >VOCABULARY</a
       >
-      <a class="router-link" color="accent" mat-raised-button routerLink=".">ADD WORD</a>
+      <a class="router-link" color="accent" mat-raised-button [routerLink]="['/new-word']">ADD WORD</a>
       <a class="router-link" color="accent" mat-raised-button routerLink=".">TRAINING</a>
     </div>
-    <div *ngIf="showUserMenu" class="account-wrapper">
+    <div class="account-wrapper">
       <div class="user-container">
         <img width="20px" src="../../../../assets/icons/avatar.svg" />
         <p class="account-text">{{ userName }}</p>

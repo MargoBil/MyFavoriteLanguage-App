@@ -18,7 +18,6 @@ export class VocabularyComponent implements OnInit, OnDestroy {
   public total = 0;
   public pageIndex = 0;
   public pageSizeOptions: number[] = [5, 10, 25, 50];
-  private wordId: string;
   public searcher: FormGroup;
   public wordName: FormControl;
 
@@ -53,18 +52,24 @@ export class VocabularyComponent implements OnInit, OnDestroy {
   public onPageChanges(event: PageEvent): void {
     if (event.pageIndex !== event.previousPageIndex || this.pageSize !== event.pageSize) {
       this.pageSize = event.pageSize;
+      this.pageIndex = event.pageIndex;
       this.getAllWords(event.pageIndex, event.pageSize);
     }
   }
 
   public updateWord(wordId: string): void {
-    console.log('update');
-    this.wordId = wordId;
+    // this.subscription.add(
+    //   this.dictionaryService.updateWord(wordId, body).subscribe(()=>{
+    //     this.getAllWords(this.pageIndex, this.pageSize);
+    //   })
   }
 
   public deleteWord(wordId: string): void {
-    console.log('delete');
-    this.wordId = wordId;
+    this.subscription.add(
+      this.dictionaryService.deleteWord(wordId).subscribe(()=>{
+        this.getAllWords(this.pageIndex, this.pageSize);
+      })
+    )
   }
 
   public onSubmit(): void {

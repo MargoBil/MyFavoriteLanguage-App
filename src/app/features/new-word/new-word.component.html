@@ -1,0 +1,30 @@
+<div class="form-container">
+  <form [formGroup]="newWordForm" (ngSubmit)="onSubmit()">
+    <div class="input-box">
+      <div>
+        <img class="select-icon" width="40px" src="../../../assets/icons/select.svg" />
+        <span class="input-info">Select language of the added word</span>
+      </div>
+
+      <mat-form-field appearance="fill">
+        <mat-label>select...</mat-label>
+        <mat-select formControlName="language">
+          <mat-option *ngFor="let language of languages" [value]="language">{{ language }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="input-box">
+      <div>
+        <img class="select-icon" width="40px" src="../../../assets/icons/select.svg" />
+        <span class="input-info">Select translate language of the added word</span>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>select...</mat-label>
+        <mat-select formControlName="translateLanguage">
+          <mat-option *ngFor="let language of languages" [value]="language">{{ language }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="submit-btn-box"><button [disabled]="newWordForm.invalid" mat-flat-button color="primary">Create</button></div>
+  </form>
+</div>
