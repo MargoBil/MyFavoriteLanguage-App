@@ -19,13 +19,11 @@ export class DictionaryService {
   constructor(private apiService: ApiService) {}
 
   public getAllWords(query?: string): Observable<IWordsData> {
-    return this.apiService
-      .get(`${allWords}/${query || ''}`)
+    return this.apiService.get(`${allWords}/${query || ''}`);
   }
 
   public getWordById(id?: string): Observable<IWord> {
-    return this.apiService
-      .get(`${allWords}/${id}`)
+    return this.apiService.get(`${allWords}/${id}`);
   }
 
   public createNewWord(body: any): Observable<any> {
