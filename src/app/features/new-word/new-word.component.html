@@ -29,6 +29,64 @@
         </mat-select>
       </mat-form-field>
     </div>
+    <div class="input-box">
+      <div>
+        <img class="select-icon" width="40px" src="../../../assets/icons/select.svg" />
+        <span class="input-info">Enter a word(s) to translate</span>
+      </div>
+      <mat-form-field>
+        <mat-label>word(s) to translate</mat-label>
+        <mat-chip-list #wordList>
+          <mat-chip
+            *ngFor="let word of words"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="removeWord(word)"
+          >
+            {{ word }}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            placeholder="new word..."
+            [matChipInputFor]="wordList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="addWord($event)"
+            formControlName="word"
+            maxlength="20"
+          />
+        </mat-chip-list>
+      </mat-form-field>
+    </div>
+    <div class="input-box">
+      <div>
+        <img class="select-icon" width="40px" src="../../../assets/icons/select.svg" />
+        <span class="input-info">Enter a translation for word(s)</span>
+      </div>
+      <mat-form-field>
+        <mat-label>translation for word(s)</mat-label>
+        <mat-chip-list #translateList>
+          <mat-chip
+            *ngFor="let translate of translations"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="removeTranslate(translate)"
+          >
+            {{ translate }}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            placeholder="new translation..."
+            [matChipInputFor]="translateList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="addTranslate($event)"
+            formControlName="translateWord"
+            maxlength="20"
+          />
+        </mat-chip-list>
+      </mat-form-field>
+    </div>
     <div class="submit-btn-box">
       <button [disabled]="newWordForm.invalid" mat-flat-button color="primary">Create</button>
     </div>

@@ -3,12 +3,12 @@
     <mat-chip *ngFor="let words of wordList; trackBy: trackById" selected class="word-item">
       <div class="word-box">
         <span class="word-text" *ngFor="let word of words.word"
-          >{{ word }}<span *ngIf="isItemRender(word, words.word)"> -- </span></span
+          >{{ word }}<span *ngIf="isItemRender(word, words.word)">{{' - '}}</span></span
         >
       </div>
       <div class="translate-box">
         <span class="word-text" *ngFor="let translate of words.translateWord"
-          >{{ translate }}<span *ngIf="isItemRender(translate, words.translateWord)"> -- </span>
+          >{{ translate }}<span *ngIf="isItemRender(translate, words.translateWord)">{{' - '}}</span>
         </span>
       </div>
       <div class="pencil-update" (click)="handlerClickForUpdate(words._id)">

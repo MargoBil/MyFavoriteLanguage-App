@@ -4,6 +4,7 @@ import { IWord } from 'src/app/core/interfaces/dictionary.interface';
 import { DictionaryService } from 'src/app/core/services/dictionary.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vocabulary',
@@ -23,7 +24,7 @@ export class VocabularyComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor(private dictionaryService: DictionaryService) {}
+  constructor(private dictionaryService: DictionaryService, private router: Router) {}
 
   public ngOnInit(): void {
     this.searcher = new FormGroup({
@@ -42,7 +43,7 @@ export class VocabularyComponent implements OnInit, OnDestroy {
       this.dictionaryService
         .getAllWords(`?page=${pageIndex + 1}&limit=${pageSize}`)
         .subscribe((data) => {
-          this.wordList = data.data;
+          this.wordList = data.data.sort((a, b) => Date.parse(b.data) - Date.parse(a.data));
           this.total = data.total;
           this.length = data.total;
         }),
@@ -58,10 +59,7 @@ export class VocabularyComponent implements OnInit, OnDestroy {
   }
 
   public updateWord(wordId: string): void {
-    // this.subscription.add(
-    //   this.dictionaryService.updateWord(wordId, body).subscribe(()=>{
-    //     this.getAllWords(this.pageIndex, this.pageSize);
-    //   })
+    this.router.navigate(['new-word', wordId]);
   }
 
   public deleteWord(wordId: string): void {

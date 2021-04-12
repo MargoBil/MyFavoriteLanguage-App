@@ -46,6 +46,8 @@ export class HeaderComponent implements OnInit {
       }
       return routerConfig.push(`/${item.path}`);
     });
+    console.log(routerConfig);
+    console.log(currentUrl);
     return [
       ...new Set(routerConfig.filter((item) => item !== '/login' && item !== '/register')),
     ].includes(currentUrl);

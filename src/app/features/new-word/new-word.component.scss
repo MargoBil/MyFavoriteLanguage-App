@@ -3,15 +3,19 @@
   justify-content: space-between;
   width: 700px;
   margin: 0 auto;
+}
 
-  mat-form-field {
-    width: 50%;
-    justify-self: flex-end;
-  }
+mat-form-field {
+  width: 50%;
+  justify-self: flex-end;
+}
+
+.mat-chip {
+ background-color:#B2DFDB;
 }
 
 .form-container {
-  margin-top: 20px;
+  margin-top: 45px;
 }
 
 .input-info {
@@ -25,4 +29,8 @@
 .submit-btn-box {
   display: flex;
   justify-content: center;
+}
+
+.form-container {
+  margin-bottom: 45px;
 }

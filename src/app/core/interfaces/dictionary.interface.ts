@@ -8,4 +8,6 @@ export interface IWord {
   translateLanguage: string;
   translateWord: Array<string>;
   word: Array<string>;
+  data: string
 }
+

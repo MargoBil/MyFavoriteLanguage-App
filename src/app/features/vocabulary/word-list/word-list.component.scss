@@ -1,7 +1,12 @@
 .word-item {
   display: flex;
   justify-content: flex-start;
-  height: 60px;
+  align-items: flex-start;
+}
+
+.mat-standard-chip {
+  height: auto;
+  padding-top: 10px;
 }
 
 .word-box,
@@ -9,7 +14,7 @@
   width: 40%;
   padding-left: 10px;
   & .word-text {
-    font-size: 20px;
+    font-size: 15px;
     text-shadow: 0px 2px 3px #324634;
     font-weight: 500;
   }

@@ -38,6 +38,10 @@ const routes: Routes = [
         path: 'new-word',
         component: NewWordComponent,
       },
+      {
+        path: 'new-word/:id',
+        component: NewWordComponent,
+      },
     ],
   },
   {
