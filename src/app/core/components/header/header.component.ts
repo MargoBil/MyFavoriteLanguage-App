@@ -20,7 +20,9 @@ export class HeaderComponent implements OnInit {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((data: NavigationEnd) => {
         this.currentUrl = data.urlAfterRedirects;
+        console.log('current url: ', this.currentUrl);
         this.showUserMenu = this.checkRouterUrl(this.currentUrl);
+        console.log('isshow menu: ', this.showUserMenu);
         if (this.showUserMenu) {
           this.authService.getCurrentUser().subscribe(({ name }) => {
             this.userName = name;
@@ -39,17 +41,9 @@ export class HeaderComponent implements OnInit {
   }
 
   private checkRouterUrl(currentUrl): boolean {
-    const routerConfig = [];
-    this.router.config.map((item) => {
-      if (item.children) {
-        item.children.map((e) => routerConfig.push(`/${e.path}`));
-      }
-      return routerConfig.push(`/${item.path}`);
+    const routerConfig: (string | RegExp)[] = [/home$/, /vocabulary$/, /new-word$/, /\/new-word\/[^/]+$/];
+    return routerConfig.some(item=>{
+      return currentUrl.match(item);
     });
-    console.log(routerConfig);
-    console.log(currentUrl);
-    return [
-      ...new Set(routerConfig.filter((item) => item !== '/login' && item !== '/register')),
-    ].includes(currentUrl);
   }
 }

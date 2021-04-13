@@ -24,6 +24,7 @@ export class NewWordComponent implements OnInit, OnDestroy {
   public words: string[] = [];
   public translations: string[] = [];
   public selectedWordId: string;
+  public isFormChanged = false;
 
   constructor(
     private dictionaryService: DictionaryService,
@@ -63,6 +64,7 @@ export class NewWordComponent implements OnInit, OnDestroy {
     if (input) {
       input.value = '';
     }
+    this.isFormChanged = true;
   }
 
   public removeWord(word: string): void {
@@ -71,6 +73,12 @@ export class NewWordComponent implements OnInit, OnDestroy {
     if (index >= 0) {
       this.words.splice(index, 1);
     }
+
+    if(index === 0) {
+      this.newWordForm.get('word').setValue('');
+    }
+    
+    this.isFormChanged = true;
   }
 
   public addTranslate(event: MatChipInputEvent): void {
@@ -83,6 +91,8 @@ export class NewWordComponent implements OnInit, OnDestroy {
     if (input) {
       input.value = '';
     }
+
+    this.isFormChanged = true;
   }
 
   public removeTranslate(translate: string): void {
@@ -91,6 +101,12 @@ export class NewWordComponent implements OnInit, OnDestroy {
     if (index >= 0) {
       this.translations.splice(index, 1);
     }
+
+    if(index === 0) {
+      this.newWordForm.get('translateWord').setValue('');
+    }
+    
+    this.isFormChanged = true;
   }
 
   public resetForm(): void {
@@ -105,6 +121,8 @@ export class NewWordComponent implements OnInit, OnDestroy {
         this.newWordForm.patchValue({
           language: data.language,
           translateLanguage: data.translateLanguage,
+          word: ' ',
+          translateWord: ' ',
         });
         this.words = data.word;
         this.translations = data.translateWord;
@@ -118,11 +136,22 @@ export class NewWordComponent implements OnInit, OnDestroy {
       word: this.words,
       translateWord: this.translations,
     };
-    this.subscription.add(
-      this.dictionaryService.createNewWord(submitData).subscribe(() => {
-        this.resetForm();
-        this.router.navigate(['vocabulary']);
-      }),
-    );
+    if (this.selectedWordId) {
+      if (this.isFormChanged) {
+        this.subscription.add(
+          this.dictionaryService.updateWord(this.selectedWordId, submitData).subscribe(() => {
+            this.resetForm();
+            this.router.navigate(['vocabulary']);
+          }),
+        );
+      }
+    } else {
+      this.subscription.add(
+        this.dictionaryService.createNewWord(submitData).subscribe(() => {
+          this.resetForm();
+          this.router.navigate(['vocabulary']);
+        }),
+      );
+    }
   }
 }
