@@ -6,4 +6,5 @@ export const apiLinks = {
   login: `${url}/auth/login`,
   user: `${url}/users/current`,
   allWords: `${url}/dictionary`,
+  filteredWords: `${url}/dictionary/search`,
 };

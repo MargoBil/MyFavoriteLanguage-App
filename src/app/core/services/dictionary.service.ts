@@ -5,7 +5,7 @@ import { apiLinks } from '../constants';
 import { IWord, IWordsData } from '../interfaces/dictionary.interface';
 import { ApiService } from './api.service';
 
-const { allWords } = apiLinks;
+const { allWords, filteredWords } = apiLinks;
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +24,10 @@ export class DictionaryService {
 
   public getWordById(id?: string): Observable<IWord> {
     return this.apiService.get(`${allWords}/${id}`);
+  }
+
+  public getWordByName(wordName: string): Observable<IWord[]> {
+    return this.apiService.get(`${filteredWords}/${wordName}`);
   }
 
   public createNewWord(body: any): Observable<any> {

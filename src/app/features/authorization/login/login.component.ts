@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
+    this.checkAuthorization();
     this.initLoginForm();
   }
 
@@ -44,6 +45,12 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.router.navigate(['home']);
         }),
       );
+    }
+  }
+
+  private checkAuthorization(): void {
+    if (this.authService.isAuth()) {
+      this.router.navigate(['home']);
     }
   }
 }

@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
+    this.checkAuthorization();
     this.initRegisterForm();
   }
 
@@ -45,6 +46,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
           this.router.navigate(['/login']);
         }),
       );
+    }
+  }
+
+  private checkAuthorization(): void {
+    if (this.authService.isAuth()) {
+      this.router.navigate(['home']);
     }
   }
 }

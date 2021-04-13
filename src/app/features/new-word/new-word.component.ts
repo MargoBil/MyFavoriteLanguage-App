@@ -55,7 +55,7 @@ export class NewWordComponent implements OnInit, OnDestroy {
 
   public addWord(event: MatChipInputEvent): void {
     const input = event.input;
-    const value = event.value.trim();
+    const value = event.value.trim().toLowerCase();
 
     if (value && this.words.length < 4) {
       this.words.push(value);
@@ -74,16 +74,16 @@ export class NewWordComponent implements OnInit, OnDestroy {
       this.words.splice(index, 1);
     }
 
-    if(index === 0) {
+    if (index === 0) {
       this.newWordForm.get('word').setValue('');
     }
-    
+
     this.isFormChanged = true;
   }
 
   public addTranslate(event: MatChipInputEvent): void {
     const input = event.input;
-    const value = event.value.trim();
+    const value = event.value.trim().toLowerCase();
     if (value && this.translations.length < 4) {
       this.translations.push(value);
     }
@@ -102,10 +102,10 @@ export class NewWordComponent implements OnInit, OnDestroy {
       this.translations.splice(index, 1);
     }
 
-    if(index === 0) {
+    if (index === 0) {
       this.newWordForm.get('translateWord').setValue('');
     }
-    
+
     this.isFormChanged = true;
   }
 

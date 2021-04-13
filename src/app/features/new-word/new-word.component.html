@@ -48,6 +48,7 @@
           </mat-chip>
           <input
             placeholder="new word..."
+            autocomplete="off"
             [matChipInputFor]="wordList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
             [matChipInputAddOnBlur]="addOnBlur"
@@ -76,6 +77,7 @@
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
           </mat-chip>
           <input
+            autocomplete="off"
             placeholder="new translation..."
             [matChipInputFor]="translateList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"

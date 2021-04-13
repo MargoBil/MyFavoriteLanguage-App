@@ -70,9 +70,19 @@ export class VocabularyComponent implements OnInit, OnDestroy {
     );
   }
 
+  public onSearchWord(wordName: string): void {
+    this.subscription.add(
+      this.dictionaryService.getWordByName(wordName).subscribe((data) => {
+        this.wordList = data;
+      }),
+    );
+  }
+
   public onSubmit(): void {
-    if (this.wordName) {
-      console.log(this.searcher);
+    if (this.wordName.value) {
+      this.onSearchWord(this.wordName.value);
+    } else {
+      this.getAllWords(this.pageIndex, this.pageSize);
     }
   }
 }
