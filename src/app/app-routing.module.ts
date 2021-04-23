@@ -24,7 +24,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'vocabulary',
         pathMatch: 'full',
       },
       {
