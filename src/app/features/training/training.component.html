@@ -1,0 +1,48 @@
+<div class="training-wrapper">
+  <mat-card class="card-box">
+    <mat-card-header class="card-header">
+      <div mat-card-avatar class="card-header-image"></div>
+      <mat-card-title class="card-title">{{
+        vocabularyRender ? currentWord?.language : currentWord?.translateLanguage
+      }}</mat-card-title>
+      <mat-card-subtitle class="card-subtitle">{{
+        vocabularyRender ? currentWord?.translateLanguage : currentWord?.language
+      }}</mat-card-subtitle>
+      <div class="reverse-btn-box">
+        <button class="reverse-btn" mat-raised-button (click)="onToggle()">
+          <img width="30px" src="../../../assets/icons/reverse.svg" />
+        </button>
+      </div>
+      <div *ngIf="isWordChecked" class="check-icon ok">
+        <img width="43px" src="../../../assets/icons/ok.svg" />
+      </div>
+      <div *ngIf="isWordChecked !== null && !isWordChecked" class="check-icon false">
+        <img width="40px" src="../../../assets/icons/false.svg" />
+      </div>
+    </mat-card-header>
+    <mat-card-content class="card-body">
+      <div class="card-word-box">
+        <div *ngIf="vocabularyRender">
+          <span class="card-word" *ngFor="let word of currentWord?.word">{{ word }}</span>
+        </div>
+        <div *ngIf="!vocabularyRender">
+          <span class="card-word" *ngFor="let translate of currentWord?.translateWord">{{
+            translate
+          }}</span>
+        </div>
+      </div>
+      <div class="check-input-box">
+        <form [formGroup]="checkForm">
+          <label>enter the translation ...</label>
+          <input formControlName="translation" autocomplete="off" maxlength="20" />
+        </form>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="card-btn-box">
+      <button mat-raised-button type="submit" class="card-btn-check" (click)="onCheckTranslation()">
+        CHECK
+      </button>
+      <button mat-raised-button class="card-btn-skip" (click)="onSkip()">SKIP</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

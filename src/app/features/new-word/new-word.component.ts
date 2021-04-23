@@ -25,6 +25,8 @@ export class NewWordComponent implements OnInit, OnDestroy {
   public translations: string[] = [];
   public selectedWordId: string;
   public isFormChanged = false;
+  public language: FormControl;
+  public translateLanguage: FormControl;
 
   constructor(
     private dictionaryService: DictionaryService,
@@ -46,8 +48,8 @@ export class NewWordComponent implements OnInit, OnDestroy {
 
   public initForm(): void {
     this.newWordForm = new FormGroup({
-      language: new FormControl('', Validators.required),
-      translateLanguage: new FormControl('', Validators.required),
+      language: (this.language = new FormControl('', Validators.required)),
+      translateLanguage: (this.translateLanguage = new FormControl('', Validators.required)),
       word: new FormControl('', [Validators.required]),
       translateWord: new FormControl('', [Validators.required]),
     });
@@ -56,6 +58,11 @@ export class NewWordComponent implements OnInit, OnDestroy {
   public addWord(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value.trim().toLowerCase();
+
+    if (this.words.includes(value)) {
+      input.value = '';
+      return;
+    }
 
     if (value && this.words.length < 4) {
       this.words.push(value);

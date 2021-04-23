@@ -7,6 +7,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { NotFoundComponent } from './features/not-found/not-found.component';
 import { VocabularyComponent } from './features/vocabulary/vocabulary.component';
 import { NewWordComponent } from './features/new-word/new-word.component';
+import { TrainingComponent } from './features/training/training.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
       {
         path: 'vocabulary',
         component: VocabularyComponent,
+      },
+      {
+        path: 'training',
+        component: TrainingComponent,
       },
       {
         path: 'new-word',

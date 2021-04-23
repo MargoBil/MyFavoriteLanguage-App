@@ -9,23 +9,36 @@
   padding-top: 10px;
 }
 
+mat-chip.mat-chip {
+  margin: 4px 0px;
+}
+
 .word-box,
 .translate-box {
   width: 40%;
   padding-left: 10px;
   & .word-text {
-    font-size: 15px;
+    font-size: 13px;
     text-shadow: 0px 2px 3px #324634;
-    font-weight: 500;
+    font-weight: 400;
+    @media only screen and(min-width: 1280px) {
+      font-size: 15px;
+      font-weight: 500;
+    }
   }
 }
 
 .list-wrapper {
-  width: 700px;
-  margin-top: 25px;
+  width: 280px;
+  margin-top: 15px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 100px;
+  @media only screen and(min-width: 1280px) {
+    width: 700px;
+    margin-top: 25px;
+    margin-bottom: 100px;
+  }
 }
 
 .pencil-update,
@@ -36,5 +49,9 @@
 }
 
 .icon-delete {
-  margin-right: 5px;
+  margin-left: 5px;
+  margin-top: 3px;
+  @media only screen and(min-width: 1280px) {
+    margin-right: 5px;
+  }
 }

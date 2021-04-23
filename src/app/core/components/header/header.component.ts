@@ -1,21 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { screenWidth } from '../../constants';
 import { AuthService } from '../../services/auth.service';
+import { ScreenService } from '../../services/screen.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
+  public subscription: Subscription = new Subscription(null);
   public userName: string;
   public currentUrl: string;
   public showUserMenu: boolean;
+  public width: number;
+  public mobileScreen: boolean;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private screenService: ScreenService,
+  ) {}
 
   public ngOnInit(): void {
+    this.mobileScreen = this.checkScreenSize();
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((data: NavigationEnd) => {
@@ -25,8 +36,23 @@ export class HeaderComponent implements OnInit {
           this.authService.getCurrentUser().subscribe(({ name }) => {
             this.userName = name;
           });
+        } else {
+          this.userName = null;
         }
       });
+    this.subscription.add(
+      this.screenService.onResize.subscribe(() => {
+        this.mobileScreen = this.checkScreenSize();
+      }),
+    );
+  }
+
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  private checkScreenSize(): boolean {
+    return window.screen.width < screenWidth.maxMobile;
   }
 
   public handlerClickOnLogoutIcon(): void {
@@ -42,6 +68,7 @@ export class HeaderComponent implements OnInit {
     const routerConfig: (string | RegExp)[] = [
       /home$/,
       /vocabulary$/,
+      /training$/,
       /new-word$/,
       /\/new-word\/[^/]+$/,
     ];

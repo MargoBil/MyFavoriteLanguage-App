@@ -1,8 +1,8 @@
 <div class="form-container">
   <form [formGroup]="newWordForm" (ngSubmit)="onSubmit()">
     <div class="input-box">
-      <div>
-        <img class="select-icon" width="40px" src="../../../assets/icons/select.svg" />
+      <div class="input-info-box">
+        <img class="select-icon" src="../../../assets/icons/select.svg" />
         <span class="input-info">Select language of the added word</span>
       </div>
 
@@ -16,8 +16,8 @@
       </mat-form-field>
     </div>
     <div class="input-box">
-      <div>
-        <img class="select-icon" width="40px" src="../../../assets/icons/select.svg" />
+      <div class="input-info-box">
+        <img class="select-icon" src="../../../assets/icons/select.svg" />
         <span class="input-info">Select translate language of the added word</span>
       </div>
       <mat-form-field appearance="fill">
@@ -30,9 +30,9 @@
       </mat-form-field>
     </div>
     <div class="input-box">
-      <div>
-        <img class="select-icon" width="40px" src="../../../assets/icons/select.svg" />
-        <span class="input-info">Enter a word(s) to translate</span>
+      <div class="input-info-box">
+        <img class="select-icon" src="../../../assets/icons/select.svg" />
+        <span class="input-info">Enter a word in {{ language.value || 'selected language' }}</span>
       </div>
       <mat-form-field>
         <mat-label>word(s) to translate</mat-label>
@@ -60,9 +60,11 @@
       </mat-form-field>
     </div>
     <div class="input-box">
-      <div>
-        <img class="select-icon" width="40px" src="../../../assets/icons/select.svg" />
-        <span class="input-info">Enter a translation for word(s)</span>
+      <div class="input-info-box">
+        <img class="select-icon" src="../../../assets/icons/select.svg" />
+        <span class="input-info"
+          >Enter a translation in {{ translateLanguage.value || 'selected language' }}</span
+        >
       </div>
       <mat-form-field>
         <mat-label>translation for word(s)</mat-label>
@@ -90,7 +92,7 @@
       </mat-form-field>
     </div>
     <div class="submit-btn-box">
-      <button [disabled]="newWordForm.invalid" mat-flat-button color="primary">Create</button>
+      <button [disabled]="newWordForm.invalid" mat-flat-button color="primary">Save</button>
     </div>
   </form>
 </div>

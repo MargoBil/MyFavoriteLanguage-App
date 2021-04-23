@@ -79,9 +79,11 @@ export class VocabularyComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit(): void {
+    console.log(this.wordName.value);
     if (this.wordName.value) {
       this.onSearchWord(this.wordName.value);
     } else {
+      this.pageIndex = 0;
       this.getAllWords(this.pageIndex, this.pageSize);
     }
   }

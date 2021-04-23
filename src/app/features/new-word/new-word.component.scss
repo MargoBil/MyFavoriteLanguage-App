@@ -1,13 +1,28 @@
 .input-box {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  width: 700px;
+  width: 280px;
   margin: 0 auto;
+  @media only screen and(min-width: 1280px) {
+    width: 700px;
+    flex-wrap: nowrap;
+  }
+}
+
+.input-info-box {
+  @media only screen and(min-width: 1280px) {
+    width: 50%;
+  }
 }
 
 mat-form-field {
-  width: 50%;
+  width: 100%;
+  margin: 0 auto;
   justify-self: flex-end;
+  @media only screen and(min-width: 1280px) {
+    width: 50%;
+  }
 }
 
 .mat-chip {
@@ -15,15 +30,21 @@ mat-form-field {
 }
 
 .form-container {
-  margin-top: 45px;
+  margin-top: 10px;
+  @media only screen and(min-width: 1280px) {
+    margin-top: 45px;
+  }
 }
 
 .input-info {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 400;
   font-style: italic;
   color: #004d40;
   text-shadow: 0px 0px 5px #a7ebde;
+  @media only screen and(min-width: 1280px) {
+    font-size: 15px;
+  }
 }
 
 .submit-btn-box {
@@ -33,4 +54,11 @@ mat-form-field {
 
 .form-container {
   margin-bottom: 45px;
+}
+
+.select-icon {
+  width: 25px;
+  @media only screen and(min-width: 1280px) {
+    width: 40px;
+  }
 }

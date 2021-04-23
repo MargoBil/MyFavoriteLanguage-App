@@ -8,3 +8,7 @@ export const apiLinks = {
   allWords: `${url}/dictionary`,
   filteredWords: `${url}/dictionary/search`,
 };
+
+export const screenWidth = {
+  maxMobile: 1280,
+};
