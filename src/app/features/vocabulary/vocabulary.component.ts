@@ -66,6 +66,10 @@ export class VocabularyComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.dictionaryService.deleteWord(wordId).subscribe(() => {
         this.getAllWords(this.pageIndex, this.pageSize);
+        if (this.wordList.length === 1) {
+          this.pageIndex = this.pageIndex - 1;
+          this.getAllWords(this.pageIndex, this.pageSize);
+        }
       }),
     );
   }
