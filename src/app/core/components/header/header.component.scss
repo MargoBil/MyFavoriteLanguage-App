@@ -67,6 +67,9 @@
   display: flex;
   margin-left: auto;
   width: 70px;
+  @media only screen and(max-width: 1279px) {
+    margin-top: 20px;
+  }
 }
 
 .logout-icon {

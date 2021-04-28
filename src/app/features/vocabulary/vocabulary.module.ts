@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmComponent } from './confirm/confirm.component';
+import { AtomSpinnerModule } from 'angular-epic-spinners';
 
 @NgModule({
   declarations: [VocabularyComponent, WordListComponent, ConfirmComponent],
@@ -26,6 +27,7 @@ import { ConfirmComponent } from './confirm/confirm.component';
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
+    AtomSpinnerModule,
   ],
   exports: [VocabularyComponent],
 })

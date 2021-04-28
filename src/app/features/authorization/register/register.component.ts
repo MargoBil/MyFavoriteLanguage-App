@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     if (this.registerForm.valid) {
       this.subscription.add(
         this.authService.onRegister(this.registerForm.value).subscribe(() => {
-          this.router.navigate(['/login']);
+          this.router.navigate(['login']);
         }),
       );
     }
@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   private checkAuthorization(): void {
     if (this.authService.isAuth()) {
-      this.router.navigate(['home']);
+      this.router.navigate(['vocabulary']);
     }
   }
 }

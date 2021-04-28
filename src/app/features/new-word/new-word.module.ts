@@ -9,6 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { AtomSpinnerModule } from 'angular-epic-spinners';
 
 @NgModule({
   declarations: [NewWordComponent],
@@ -22,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatSelectModule,
     MatChipsModule,
     MatIconModule,
+    AtomSpinnerModule,
   ],
   exports: [NewWordComponent],
 })

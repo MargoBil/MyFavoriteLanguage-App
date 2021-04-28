@@ -1,11 +1,12 @@
 <div class="form-container">
-  <form [formGroup]="newWordForm" (ngSubmit)="onSubmit()">
+  <app-atom-spinner class="spinner" *ngIf="loading" [animationDuration]="1000" [size]="120" [color]="'#00BFA5'">
+  </app-atom-spinner>
+  <form *ngIf="!loading" [formGroup]="newWordForm" (ngSubmit)="onSubmit()">
     <div class="input-box">
       <div class="input-info-box">
         <img class="select-icon" src="../../../assets/icons/select.svg" />
         <span class="input-info">Select language of the added word</span>
       </div>
-
       <mat-form-field appearance="fill">
         <mat-label>select...</mat-label>
         <mat-select formControlName="language">

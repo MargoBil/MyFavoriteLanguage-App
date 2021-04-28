@@ -1,5 +1,7 @@
 <div class="training-wrapper">
-  <mat-card class="card-box">
+  <app-atom-spinner *ngIf="loading" [animationDuration]="1000" [size]="120" [color]="'#00BFA5'">
+  </app-atom-spinner>
+  <mat-card class="card-box" *ngIf="!loading">
     <mat-card-header class="card-header">
       <div mat-card-avatar class="card-header-image"></div>
       <mat-card-title class="card-title">{{

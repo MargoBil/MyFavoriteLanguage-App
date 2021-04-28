@@ -16,6 +16,7 @@ import { NotFoundModule } from './features/not-found/not-found.module';
 import { VocabularyModule } from './features/vocabulary/vocabulary.module';
 import { NewWordModule } from './features/new-word/new-word.module';
 import { TrainingModule } from './features/training/training.module';
+import { AtomSpinnerModule } from 'angular-epic-spinners';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -40,6 +41,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     VocabularyModule,
     NewWordModule,
     TrainingModule,
+    AtomSpinnerModule,
   ],
   providers: [INTERCEPTOR_PROVIDER, AuthGuard],
   bootstrap: [AppComponent],

@@ -16,10 +16,12 @@ export class TrainingComponent implements OnInit, OnDestroy {
   public currentWord: IWord;
   public isWordChecked = null;
   public vocabularyRender = true;
+  public loading = false;
 
   constructor(private dictionaryService: DictionaryService) {}
 
   public ngOnInit(): void {
+    this.loading = true;
     this.checkForm = new FormGroup({
       translation: new FormControl(''),
     });
@@ -35,6 +37,7 @@ export class TrainingComponent implements OnInit, OnDestroy {
       this.dictionaryService.getAllWords().subscribe(({ data }) => {
         this.vocabulary = data;
         this.randomChangeCurrentWord(this.vocabulary);
+        this.loading = false;
       }),
     );
   }

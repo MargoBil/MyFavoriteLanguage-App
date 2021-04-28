@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.loginForm.valid) {
       this.subscription.add(
         this.authService.onLogin(this.loginForm.value).subscribe(() => {
-          this.router.navigate(['home']);
+          this.router.navigate(['vocabulary']);
         }),
       );
     }
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private checkAuthorization(): void {
     if (this.authService.isAuth()) {
-      this.router.navigate(['home']);
+      this.router.navigate(['vocabulary']);
     }
   }
 }

@@ -10,7 +10,7 @@
           mat-icon-button
           *ngIf="wordName"
           matSuffix
-          (click)="value = ''"
+          (click)="value = ''; onResetInput($event)"
         >
           <mat-icon>close</mat-icon>
         </button>
@@ -22,7 +22,11 @@
       </div>
     </form>
   </div>
+  <app-atom-spinner *ngIf="loading" [animationDuration]="1000" [size]="120" [color]="'#00BFA5'">
+  </app-atom-spinner>
   <app-word-list
+    class="spinner"
+    *ngIf="!loading"
     [wordList]="wordList"
     (updateWord)="updateWord($event)"
     (deleteWord)="deleteWord($event)"

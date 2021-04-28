@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterViewInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Languages } from 'src/app/core/enums/languages.enum';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './new-word.component.html',
   styleUrls: ['./new-word.component.scss'],
 })
-export class NewWordComponent implements OnInit, OnDestroy {
+export class NewWordComponent implements OnInit, OnDestroy, AfterViewInit {
   private subscription: Subscription = new Subscription();
   public newWordForm: FormGroup;
   public languages = Object.values(Languages);
@@ -27,6 +27,7 @@ export class NewWordComponent implements OnInit, OnDestroy {
   public isFormChanged = false;
   public language: FormControl;
   public translateLanguage: FormControl;
+  public loading = false;
 
   constructor(
     private dictionaryService: DictionaryService,
@@ -34,7 +35,8 @@ export class NewWordComponent implements OnInit, OnDestroy {
     private activateRoute: ActivatedRoute,
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    this.loading = true;
     this.initForm();
     this.selectedWordId = this.activateRoute.snapshot.paramMap.get('id');
     if (this.selectedWordId) {
@@ -42,7 +44,13 @@ export class NewWordComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
+  public ngAfterViewInit(): void {
+    setTimeout(() => {
+      Promise.resolve().then(() => (this.loading = false));
+    }, 200);
+  }
+
+  public ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 

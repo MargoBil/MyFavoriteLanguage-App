@@ -26,3 +26,11 @@
     margin-left: 15px;
   }
 }
+
+app-atom-spinner {
+  width: 100%;
+  height: calc(100vh - 250px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

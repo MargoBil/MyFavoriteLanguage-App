@@ -55,6 +55,7 @@
   }
   @media only screen and(min-width: 1280px) {
     width: 300px;
+    padding-top: 5px;
   }
 }
 
@@ -134,7 +135,7 @@
       ::content {
         padding-left: 10px;
         padding-right: 10px;
-        font-size: 10px;
+        font-size: 17px;
         text-align: center;
         @media only screen and(min-width: 1280px) {
           font-size: 15px;

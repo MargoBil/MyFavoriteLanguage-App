@@ -31,6 +31,9 @@ mat-form-field {
 
 .form-container {
   margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media only screen and(min-width: 1280px) {
     margin-top: 45px;
   }
@@ -61,4 +64,8 @@ mat-form-field {
   @media only screen and(min-width: 1280px) {
     width: 40px;
   }
+}
+
+.spinner {
+  margin-top: 70px;
 }

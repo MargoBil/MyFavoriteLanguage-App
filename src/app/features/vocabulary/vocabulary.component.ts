@@ -21,6 +21,7 @@ export class VocabularyComponent implements OnInit, OnDestroy {
   public pageSizeOptions: number[] = [5, 10, 25, 50];
   public searcher: FormGroup;
   public wordName: FormControl;
+  public loading = false;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -39,6 +40,7 @@ export class VocabularyComponent implements OnInit, OnDestroy {
   }
 
   public getAllWords(pageIndex?, pageSize?): void {
+    this.loading = true;
     this.subscription.add(
       this.dictionaryService
         .getAllWords(`?page=${pageIndex + 1}&limit=${pageSize}`)
@@ -46,6 +48,7 @@ export class VocabularyComponent implements OnInit, OnDestroy {
           this.wordList = data.data.sort((a, b) => Date.parse(b.data) - Date.parse(a.data));
           this.total = data.total;
           this.length = data.total;
+          this.loading = false;
         }),
     );
   }
@@ -83,12 +86,18 @@ export class VocabularyComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit(): void {
-    console.log(this.wordName.value);
     if (this.wordName.value) {
       this.onSearchWord(this.wordName.value);
     } else {
-      this.pageIndex = 0;
-      this.getAllWords(this.pageIndex, this.pageSize);
+      return;
     }
+  }
+
+  public onResetInput(): void {
+    if (!this.wordName.value) {
+      return;
+    }
+    this.pageIndex = 0;
+    this.getAllWords(this.pageIndex, this.pageSize);
   }
 }

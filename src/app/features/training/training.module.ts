@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AtomSpinnerModule } from 'angular-epic-spinners';
 
 @NgModule({
   declarations: [TrainingComponent],
@@ -18,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    AtomSpinnerModule
   ],
   exports: [TrainingComponent],
 })
