@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   private checkAuthorization(): void {
     if (this.authService.isAuth()) {
-      this.router.navigate(['vocabulary']);
+      this.router.navigate(['home']);
     }
   }
 }

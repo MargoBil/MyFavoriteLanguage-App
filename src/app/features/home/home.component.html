@@ -1,20 +1,20 @@
 <div class="home-overwiew-wrapper">
- <div class="card-box">
-    <mat-card class="card">
-        <video src="../../../assets/video/books.mp4" autoplay loop muted></video>
-        <p class="card-1">Go to your vocabulary...</p>
-      </mat-card>
- </div>
- <div class="card-box">
-    <mat-card class="card">
-        <video src="../../../assets/video/alphabet.mp4" autoplay loop muted></video>
-        <p class="card-2">Increase vocabulary...</p>
-      </mat-card>
- </div>
   <div class="card-box">
-    <mat-card class="card">
-        <video src="../../../assets/video/question.mp4" autoplay loop muted></video>
-        <p class="card-3">Check your vocabulary...</p>
-      </mat-card>
+    <mat-card class="card" [routerLink]="['/vocabulary']">
+      <video src="../../../assets/video/books.mp4" autoplay loop muted></video>
+      <p class="card-1">Go to your vocabulary...</p>
+    </mat-card>
+  </div>
+  <div class="card-box">
+    <mat-card class="card" [routerLink]="['/new-word']">
+      <video src="../../../assets/video/alphabet.mp4" autoplay loop muted></video>
+      <p class="card-2">Increase vocabulary...</p>
+    </mat-card>
+  </div>
+  <div class="card-box">
+    <mat-card class="card" [routerLink]="['/training']">
+      <video src="../../../assets/video/question.mp4" autoplay loop muted></video>
+      <p class="card-3">Check your vocabulary...</p>
+    </mat-card>
   </div>
 </div>

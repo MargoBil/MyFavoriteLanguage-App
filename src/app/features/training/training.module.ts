@@ -19,7 +19,7 @@ import { AtomSpinnerModule } from 'angular-epic-spinners';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    AtomSpinnerModule
+    AtomSpinnerModule,
   ],
   exports: [TrainingComponent],
 })

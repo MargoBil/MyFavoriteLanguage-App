@@ -1,5 +1,11 @@
 <div class="form-container">
-  <app-atom-spinner class="spinner" *ngIf="loading" [animationDuration]="1000" [size]="120" [color]="'#00BFA5'">
+  <app-atom-spinner
+    class="spinner"
+    *ngIf="loading"
+    [animationDuration]="1000"
+    [size]="120"
+    [color]="'#00BFA5'"
+  >
   </app-atom-spinner>
   <form *ngIf="!loading" [formGroup]="newWordForm" (ngSubmit)="onSubmit()">
     <div class="input-box">
